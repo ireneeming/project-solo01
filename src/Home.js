@@ -9,20 +9,17 @@ const Home = (props) => {
 
     const my_lists = props.list;
     
-    //function randomNum(min,max){
-    //  
-    //  let randNum = Math.floor(Math.random()*(max-min+1)) + min;
-    //  return randNum;
-    //}
+    function randomNum(min,max){
+     
+     let randNum = Math.floor(Math.random()*(max)) + min;
+     return randNum;
+    }
     //let RandNum = randomNum(1,5);
 
     //const circles = [false, false, false, false, false]
+//let random = Math.floor(Math.random()*5+1);
 
-
-    
-    
-
-    
+    const circle = [0,0,0,0,0];
 
 
     return (
@@ -31,20 +28,24 @@ const Home = (props) => {
           <Line/>
             {
                 my_lists.map((list, index) => {
+                   let RandNum = randomNum(0,5);
                     return (
                       <>
                         <DateList>
                             <p style={{ width:'40px',color:'#404040' }}>{list}</p>
                             <div style={{width:'70%',display:'flex',justifyContent:'space-around'}}>
-                            {
-                             Math.floor(Math.random()*6)
-                            }
                             
+                            {circle.map((c, index) => {
+                                return (
+                                  <Circle key={index} className={index <=RandNum ? 'Clickedcircle': null}/>
+                                );
+                            })}
+                            
+                              {/* <Circle></Circle>
                               <Circle></Circle>
                               <Circle></Circle>
                               <Circle></Circle>
-                              <Circle></Circle>
-                              <Circle></Circle>
+                              <Circle></Circle> */}
                             </div>
                             <BtnGo className="list_item" key={index}  onClick={() => { history.push(`/day/${list}`);  }}>    
                             <i className="fas fa-chevron-right"></i>
@@ -96,7 +97,7 @@ const Circle = styled.div `
 width:28px; 
 height:28px; 
 border-radius:50%;
-background-color:#f1a7a7;
+background-color:#bbb;
 `;
 
 const BtnGo = styled.div `
