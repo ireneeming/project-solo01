@@ -28,7 +28,7 @@ const Home = (props) => {
           <Line/>
             {
                 my_lists.map((list, index) => {
-                   let RandNum = randomNum(0,5);
+                  let RandNum = randomNum(0,5);
                     return (
                       <>
                         <DateList>
@@ -37,7 +37,10 @@ const Home = (props) => {
                             
                             {circle.map((c, index) => {
                                 return (
+                                 <>
+                                 {/* {RandNum} */}
                                   <Circle key={index} className={index <=RandNum ? 'Clickedcircle': null}/>
+                                </>
                                 );
                             })}
                             
